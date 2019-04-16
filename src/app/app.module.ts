@@ -5,6 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { CharacterFilterComponent } from './filter/character-filter.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material';
+import {HomeModule} from './home/home.module';
+import {FilterModule} from './filter/filter.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -15,14 +19,16 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    CharacterFilterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    MatButtonModule
+    MatButtonModule,
+    HomeModule,
+    FilterModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,20 @@
 
-
-
+<div class="search-form">
+<mat-form-field color="accent" style="width: 40%">
+    <input matInput class="nameInput">
+    <mat-placeholder class=placeholder>Full name</mat-placeholder>
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>Type</mat-label>
+    <mat-select class="select-type">
+      <mat-option>Character</mat-option>
+      <mat-option>House</mat-option>
+      <mat-option>Book</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button style="margin-left: 40px">Quick search</button>
+</div>
 <button mat-raised-button (click)="router.navigateByUrl('/character')">Characters</button>
+<button mat-raised-button (click)="router.navigateByUrl('/')">Houses</button>
+<button mat-raised-button (click)="router.navigateByUrl('/')">Books</button>
+
