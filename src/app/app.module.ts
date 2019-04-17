@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchResultComponent} from './search-result/search-result.component';
 import {SearchResultModule} from './search-result/search-result.module';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     BrowserAnimationsModule,
     SearchResultModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
