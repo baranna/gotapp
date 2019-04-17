@@ -12,9 +12,9 @@
       <mat-option>Book</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button style="margin-left: 40px">Quick search</button>
+  <button mat-raised-button style="margin-left: 40px" (click)="router.navigateByUrl('/searchresult')">Quick search</button>
 </div>
-<button mat-raised-button (click)="router.navigateByUrl('/character')">Characters</button>
+<button mat-raised-button (click)="router.navigateByUrl('/characterfilter')">Characters</button>
 <button mat-raised-button (click)="router.navigateByUrl('/')">Houses</button>
 <button mat-raised-button (click)="router.navigateByUrl('/')">Books</button>
 
