@@ -1,20 +1,22 @@
 
-<div class="search-form">
+<div class="search-menu">
 <mat-form-field color="accent" style="width: 40%">
-    <input matInput class="nameInput">
+    <input matInput class="nameInput" #nameInput required>
     <mat-placeholder class=placeholder>Full name</mat-placeholder>
   </mat-form-field>
   <mat-form-field color="accent">
     <mat-label>Type</mat-label>
-    <mat-select class="select-type">
-      <mat-option>Character</mat-option>
-      <mat-option>House</mat-option>
-      <mat-option>Book</mat-option>
+    <mat-select #typeInput required>
+      <mat-option value="characters">Character</mat-option>
+      <mat-option value="houses">House</mat-option>
+      <mat-option value="books">Book</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button style="margin-left: 40px" (click)="router.navigateByUrl('/searchresult')">Quick search</button>
+  <button mat-raised-button style="margin-left: 40px" [disabled]="!nameInput.value || !typeInput.value" (click)="searchCharacter(nameInput.value)">Quick search</button>
 </div>
-<button mat-raised-button (click)="router.navigateByUrl('/characterfilter')">Characters</button>
-<button mat-raised-button (click)="router.navigateByUrl('/')">Houses</button>
-<button mat-raised-button (click)="router.navigateByUrl('/')">Books</button>
+<div class="entity-types">
+  <button mat-raised-button (click)="router.navigateByUrl('/characterfilter')">Characters</button>
+  <button mat-raised-button (click)="router.navigateByUrl('/')">Houses</button>
+  <button mat-raised-button (click)="router.navigateByUrl('/')">Books</button>
+</div>
 

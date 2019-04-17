@@ -1,12 +1,17 @@
 .nameInput{
   color: white;
 }
-.search-form {
+.search-menu {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+.entity-types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
 
 
 

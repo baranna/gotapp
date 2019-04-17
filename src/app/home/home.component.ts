@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {CharacterService} from '../services/character.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,16 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private characterService: CharacterService) { }
 
   ngOnInit() {
   }
 
+  searchCharacter(name: string) {
+    this.characterService.searchCharacterByName(name).subscribe(
+      result => {
+        console.log(result);
+      }
+    );
+  }
 }
