@@ -8,4 +8,4 @@ import { CharacterFilterComponent } from './character-filter.component';
     CommonModule
   ]
 })
-export class FilterModule { }
+export class CharacterFilterModule { }
