@@ -1,7 +1,7 @@
 <h3 class="search-result-header">Search result:</h3>
 <mat-list *ngIf="resultCount != 0; else elseBlock">
   <mat-card *ngFor="let entity of result">
-    <a [routerLink]="['/', detailsLink]" >{{entity.name}} </a>
+    <a [routerLink]="['/', detailsLink, {url: entity.url}]" >{{entity.name}}</a>
   </mat-card>
 </mat-list>
 

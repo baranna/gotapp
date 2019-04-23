@@ -23,8 +23,8 @@ export class SearchService {
     return this.http.get<Entity[]>('https://anapioficeandfire.com/api/' + this.type + '?name=' + this.name);
   }
 
-  searchCharacter(id: number): Observable<Character> {
-    return this.http.get<Character>('https://anapioficeandfire.com/api/characters/' + id.toString());
+  getByUrl(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 
 }
