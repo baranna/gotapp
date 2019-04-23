@@ -1,0 +1,22 @@
+.mat-card {
+  width: 30%;
+  margin: auto;
+  margin-top: 10px;
+}
+.search-result-header{
+  color: aliceblue;
+  font-family: "Segoe UI";
+  font-size: 25px;
+  margin-left: 100px;
+}
+a {
+  color: aliceblue;
+  font-family: "Segoe UI";
+  text-decoration: none;
+}
+a:visited {
+  color:aliceblue;
+}
+a:hover {
+  color: orange;
+}

@@ -1,3 +1,11 @@
-<p>
-  search-result works!
-</p>
+<h3 class="search-result-header">Search result:</h3>
+<mat-list *ngIf="resultCount != 0; else elseBlock">
+  <mat-card *ngFor="let entity of result">
+    <a [routerLink]="['/', detailsLink]" >{{entity.name}} </a>
+  </mat-card>
+</mat-list>
+
+<ng-template #elseBlock>
+  <p style="text-align: center">Sorry we couldn't find what you were searching for.</p>
+</ng-template>
+
