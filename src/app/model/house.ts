@@ -1,4 +1,6 @@
-export class House {
+import {Entity} from './entity';
+
+export class House extends Entity {
   constructor(public	url:	string,
               public	name:	string,
               public	region:	string,
@@ -14,6 +16,7 @@ export class House {
               public	diedOut:	string,
               public	ancestralWeapons:	string[],
               public	cadetBranches:	string[],
-              public	swornMembers:	string[],
-) {}
+              public	swornMembers:	string[]) {
+    super(url, name);
+  }
 }

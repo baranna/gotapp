@@ -1,4 +1,6 @@
-export class Character {
+import {Entity} from './entity';
+
+export class Character extends Entity{
   constructor(public  url: string,
               public  name: string,
               public  gender: string,
@@ -16,5 +18,6 @@ export class Character {
               public  tvSeries: string[],
               public  playedBy: string[]
   ) {
+    super(url, name);
   }
 }
