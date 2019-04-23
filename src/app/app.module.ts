@@ -2,22 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { CharacterFilterComponent } from './character-filter/character-filter.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material';
 import {HomeModule} from './home/home.module';
-import {CharacterFilterModule} from './character-filter/character-filter.module';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchResultComponent} from './search-result/search-result.component';
 import {SearchResultModule} from './search-result/search-result.module';
 import {HttpClientModule} from '@angular/common/http';
+import {SearchService} from './services/search.service';
+import {CharacterDetailsComponent} from './character-details/character-details/character-details.component';
+import {CharacterDetailsModule} from './character-details/character-details.module';
+
+import {HouseDetailsComponent} from './house-details/house-details/house-details.component';
+
+import {HouseDetailsModule} from './house-details/house-details.module';
+import {BookDetailsComponent} from './book-details/book-details/book-details.component';
+import {BookDetailsModule} from './book-details/book-details.module';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'characterfilter', component: CharacterFilterComponent },
-  { path: 'searchresult', component: SearchResultComponent }
+  { path: 'searchresult', component: SearchResultComponent },
+  {path: 'charactersdetails', component: CharacterDetailsComponent},
+  {path: 'housesdetails', component: HouseDetailsComponent},
+  {path: 'booksdetails', component: BookDetailsComponent},
 ];
 
 
@@ -30,13 +39,15 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatButtonModule,
     HomeModule,
-    CharacterFilterModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     SearchResultModule,
-    HttpClientModule
+    HttpClientModule,
+    CharacterDetailsModule,
+    BookDetailsModule,
+    HouseDetailsModule
   ],
-  providers: [],
+  providers: [SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
