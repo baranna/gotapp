@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {CharacterService} from '../services/character.service';
+import {SearchService} from '../services/search.service';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +9,14 @@ import {CharacterService} from '../services/character.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public router: Router, private characterService: CharacterService) { }
+  constructor(public router: Router, private characterService: SearchService) { }
 
   ngOnInit() {
   }
 
-  searchCharacter(name: string) {
-    this.characterService.searchCharacterByName(name).subscribe(
-      result => {
-        console.log(result);
-      }
-    );
+  // TODO filterezés - lehet nem is kell
+  searchEntity(name: string, type: string) {
+    this.characterService.setSearchEntitiesByName(name, type);
+    this.router.navigateByUrl('/searchresult');
   }
 }

@@ -12,11 +12,9 @@
       <mat-option value="books">Book</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button style="margin-left: 40px" [disabled]="!nameInput.value || !typeInput.value" (click)="searchCharacter(nameInput.value)">Quick search</button>
-</div>
-<div class="entity-types">
-  <button mat-raised-button (click)="router.navigateByUrl('/characterfilter')">Characters</button>
-  <button mat-raised-button (click)="router.navigateByUrl('/')">Houses</button>
-  <button mat-raised-button (click)="router.navigateByUrl('/')">Books</button>
+  <button mat-raised-button style="margin-left: 40px" [disabled]="!nameInput.value || !typeInput.value"
+          (click)="searchEntity(nameInput.value, typeInput.value)">
+    Quick search
+  </button>
 </div>
 
