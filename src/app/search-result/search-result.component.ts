@@ -1,18 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+
 import {SearchService} from '../services/search.service';
-import {Observable} from 'rxjs';
 import {Entity} from '../model/entity';
-import {Character} from '../model/character';
-import {Book} from '../model/book';
-import {House} from '../model/house';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css']
 })
-// TODO részletes infók
-// TODO navigálás
+// TODO több találat miatt lehetne néven kívül plusz infó pl born
 
 export class SearchResultComponent implements OnInit {
 

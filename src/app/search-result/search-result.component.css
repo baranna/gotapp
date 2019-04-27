@@ -1,13 +1,16 @@
 .mat-card {
-  width: 30%;
-  margin: auto;
+  width: 100%;
+  margin: 10px;
   margin-top: 10px;
+  background: rgba(57, 67, 98, 0.55);
+  text-align: center;
+  font-weight: bold;
 }
 .search-result-header{
   color: aliceblue;
   font-family: "Segoe UI";
   font-size: 25px;
-  margin-left: 100px;
+  margin: 10px;
 }
 a {
   color: aliceblue;
@@ -18,5 +21,14 @@ a:visited {
   color:aliceblue;
 }
 a:hover {
-  color: orange;
+  color: dodgerblue;
+}
+
+.search-result-header-div {
+  text-align: left;
+}
+
+.search-results-div {
+  width: 30%;
+  margin: auto;
 }
