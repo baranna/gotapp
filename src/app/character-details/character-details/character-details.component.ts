@@ -12,15 +12,6 @@ import {Observable} from 'rxjs';
 })
 export class CharacterDetailsComponent implements OnInit {
 
-  /* TODO linkek ezekre + név is kéne valahogy
-  - father
-  - mother
-  - spouse
-  - allegiances
-  - books
-  - povbooks
-   */
-
   public character: Character;
   public observableCharacter: Observable<Character>;
 
@@ -31,13 +22,12 @@ export class CharacterDetailsComponent implements OnInit {
   ngOnInit() {
     this.observableCharacter = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.searchService.getCharacterbyId(params.get('id')))
+        this.searchService.getCharacterById(params.get('id')))
     );
     this.observableCharacter.subscribe(
       result => {
         this.character = result;
         this.character.id = this.character.url.split('/')[5];
-        console.log(result);
       }
     );
   }
