@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import {SearchService} from '../../services/search.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Book} from '../../model/book';
+import {switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-book-details',
@@ -10,20 +12,25 @@ import {Book} from '../../model/book';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
+  //TODO: released date formázása
 
   public book: Book;
-  private bookUrl: string;
+  private observableBook: Observable<Book>;
 
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
-    this.bookUrl = this.route.snapshot.paramMap.get('url');
+
   }
 
 
   ngOnInit() {
-    this.searchService.getByUrl(this.bookUrl).subscribe(
+    this.observableBook = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.searchService.getBookById(params.get('id')))
+    );
+    this.observableBook.subscribe(
       result => {
         this.book = result;
-        console.log(result);
+        this.book.id = this.book.url.split('/')[5];
       }
     );
   }
