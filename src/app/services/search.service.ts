@@ -5,6 +5,7 @@ import {Character} from '../model/character';
 import {Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {House} from '../model/house';
+import {Book} from '../model/book';
 
 
 @Injectable({
@@ -15,9 +16,13 @@ export class SearchService {
   constructor(private http: HttpClient) {
   }
 
+  // TODO: url kiszervezés
+  // TODO: refactor
+  // TODO: betöltések külön függvényekbe
+  // TODO: id beállítások
   // FIXME: redirect a home-ra ha ezek undefined
-  public type: string = 'characters';
-  public name: string = 'Jon Snow';
+  public type: string;
+  public name: string;
 
   setSearchEntitiesByName(name: string, type: string) {
     this.type = type;
@@ -42,7 +47,7 @@ export class SearchService {
     );
   }
 
-  getCharacterbyId(id: string): Observable<Character> {
+  getCharacterById(id: string): Observable<Character> {
     return this.http.get<Character>(`https://anapioficeandfire.com/api/characters/${id}`).pipe(
       map<Character, any>(
         response => {
@@ -62,13 +67,116 @@ export class SearchService {
           });
         }
 
+          if (response.father) {
+            let id = (<string><unknown>response.father).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.father = result;
+              response.father.id = id;
+            });
+          }
+
+          if (response.mother) {
+            let id = (<string><unknown>response.mother).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.mother = result;
+              response.mother.id = id;
+            });
+          }
+
+          for (let i = 0; i < response.books.length; i++) {
+            let id = (<string><unknown>response.books[i]).split('/')[5];
+            this.getById('books', id).subscribe(result => {
+              response.books[i] = result;
+              response.books[i].id = id;
+            });
+          }
+
+          for (let i = 0; i < response.povBooks.length; i++) {
+            let id = (<string><unknown>response.povBooks[i]).split('/')[5];
+            this.getById('books', id).subscribe(result => {
+              response.povBooks[i] = result;
+              response.povBooks[i].id = id;
+            });
+          }
+
+
         response.id = response.url.split('/')[5];
         return response;
       })
     );
   }
 
-  getHouseId(id: string): Observable<House> {
-    return this.http.get<House>(`https://anapioficeandfire.com/api/houses/${id}`);
+  getHouseById(id: string): Observable<House> {
+    return this.http.get<House>(`https://anapioficeandfire.com/api/houses/${id}`).pipe(
+      map<House, any>(response => {
+          if (response.founder) {
+            let id = (<string><unknown>response.founder).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.founder = result;
+              response.founder.id = id;
+            });
+          }
+
+          if (response.overlord) {
+            let id = (<string><unknown>response.overlord).split('/')[5];
+            this.getById('houses', id).subscribe(result => {
+              response.overlord = result;
+              response.overlord.id = id;
+            });
+          }
+
+          if (response.heir) {
+            let id = (<string><unknown>response.heir).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.heir = result;
+              response.heir.id = id;
+            });
+          }
+
+          if (response.currentLord) {
+            let id = (<string><unknown>response.currentLord).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.currentLord = result;
+              response.currentLord.id = id;
+            });
+          }
+
+          // TODO: nem működik lassú az api és nem jönnek meg
+          for (let i = 0; i < response.swornMembers.length; i++) {
+            let id = (<string><unknown>response.swornMembers[i]).split('/')[5];
+            this.getById('characters', id).subscribe(result => {
+              response.swornMembers[i] = result;
+              response.swornMembers[i].id = id;
+            });
+          }
+
+          for (let i = 0; i < response.cadetBranches.length; i++) {
+            let id = (<string><unknown>response.cadetBranches[i]).split('/')[5];
+            this.getById('houses', id).subscribe(result => {
+              response.cadetBranches[i] = result;
+              response.cadetBranches[i].id = id;
+            });
+          }
+
+          return response;
+        }
+      )
+    );
+  }
+
+  getBookById(id: string): Observable<Book> {
+    return this.http.get<Book>(`https://anapioficeandfire.com/api/books/${id}`).pipe(
+      map<Book, any>(response => {
+
+        for (let i = 0; i < response.povCharacters.length; i++) {
+          let id = (<string><unknown>response.povCharacters[i]).split('/')[5];
+          this.getById('characters', id).subscribe(result => {
+            response.povCharacters[i] = result;
+            response.povCharacters[i].id = id;
+          });
+        }
+        return response;
+      })
+    );
   }
 }
