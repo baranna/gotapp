@@ -9,6 +9,8 @@ import {SearchService} from '../services/search.service';
 })
 export class HomeComponent implements OnInit {
 
+  public type = "characters";
+
   constructor(public router: Router, private characterService: SearchService) { }
 
   ngOnInit() {

@@ -12,6 +12,22 @@
   justify-content: center;
   margin-top: 60px;
 }
+.mat-raised-button {
+  font-size: 16px;
+  background: rgba(57, 67, 98, 0.88);
+  font-weight: bold;
+}
+
+.mat-option {
+  background: rgba(57, 67, 98, 0.88);
+}
+
+.mat-option:hover {
+  background: rgba(93, 120, 171, 0.88);
+}
+ .mat-option.mat-selected {
+   background: rgba(57, 67, 98, 0.88) !important;
+ }
 
 
 

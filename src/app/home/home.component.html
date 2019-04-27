@@ -6,14 +6,14 @@
   </mat-form-field>
   <mat-form-field color="accent">
     <mat-label>Type</mat-label>
-    <mat-select #typeInput required>
+    <mat-select [(value)]="type" required>
       <mat-option value="characters">Character</mat-option>
       <mat-option value="houses">House</mat-option>
       <mat-option value="books">Book</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button style="margin-left: 40px" [disabled]="!nameInput.value || !typeInput.value"
-          (click)="searchEntity(nameInput.value, typeInput.value)">
+  <button mat-raised-button style="margin-left: 40px" [disabled]="!nameInput.value"
+          (click)="searchEntity(nameInput.value, type)">
     Quick search
   </button>
 </div>
