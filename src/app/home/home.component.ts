@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  // TODO filterezés - lehet nem is kell
   searchEntity(name: string, type: string) {
     this.characterService.setSearchEntitiesByName(name, type);
     this.router.navigateByUrl('/searchresult');
