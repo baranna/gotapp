@@ -1,4 +1,6 @@
 import {Entity} from './entity';
+import {House} from './house';
+import {Book} from './book';
 
 export class Character extends Entity{
   constructor(public  url: string,
@@ -9,15 +11,16 @@ export class Character extends Entity{
               public  died: string,
               public  titles: string[],
               public  aliases: string[],
-              public  father: string,
-              public  mother: string,
-              public  spouse: string,
-              public  allegiances: string[],
-              public  books: string[],
-              public  povBooks: string[],
+              public  father: Character,
+              public  mother: Character,
+              public  spouse: Character,
+              public  allegiances: House[],
+              public  books: Book[],
+              public  povBooks: Book[],
               public  tvSeries: string[],
-              public  playedBy: string[]
+              public  playedBy: string[],
+              public id: string
   ) {
-    super(url, name);
+    super(id, url, name);
   }
 }

@@ -11,7 +11,9 @@ export class Book extends Entity{
               public mediaType: string,
               public released: Date,
               public characters: string[],
-              public povCharacters: string[]) {
-    super(url, name);
+              public povCharacters: string[],
+              public id: string
+  ){
+    super(id, url, name);
   }
 }

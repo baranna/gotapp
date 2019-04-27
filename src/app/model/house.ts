@@ -16,7 +16,9 @@ export class House extends Entity {
               public	diedOut:	string,
               public	ancestralWeapons:	string[],
               public	cadetBranches:	string[],
-              public	swornMembers:	string[]) {
-    super(url, name);
+              public	swornMembers:	string[],
+              public id: string
+  ){
+    super(id, url, name);
   }
 }
