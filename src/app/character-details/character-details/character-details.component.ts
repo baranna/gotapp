@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../services/search.service';
 import {Character} from '../../model/character';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-character-details',
@@ -10,18 +12,31 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CharacterDetailsComponent implements OnInit {
 
+  /* TODO linkek ezekre + név is kéne valahogy
+  - father
+  - mother
+  - spouse
+  - allegiances
+  - books
+  - povbooks
+   */
+
   public character: Character;
-  private characterUrl: string;
+  public observableCharacter: Observable<Character>;
 
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
-    this.characterUrl = this.route.snapshot.paramMap.get('url');
   }
 
 
   ngOnInit() {
-    this.searchService.getByUrl(this.characterUrl).subscribe(
+    this.observableCharacter = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.searchService.getCharacterbyId(params.get('id')))
+    );
+    this.observableCharacter.subscribe(
       result => {
         this.character = result;
+        this.character.id = this.character.url.split('/')[5];
         console.log(result);
       }
     );

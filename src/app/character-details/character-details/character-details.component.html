@@ -1,3 +1,57 @@
-<p>
-  {{character?.name}}
-</p>
+<mat-card>
+  <mat-card-title>{{character?.name}}</mat-card-title>
+  <mat-card-subtitle>
+    <span *ngFor="let aliase of character?.aliases">
+      {{aliase}},
+    </span>
+  </mat-card-subtitle>
+    <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="first-row" *ngIf="character?.playedBy">Played by {{character?.playedBy}}</div>
+
+    <div class="data" *ngIf="character?.born">Born {{character?.born}}</div>
+
+    <div class="data" *ngIf="character?.gender">Gender: {{character?.gender}}</div>
+
+    <div class="data" *ngIf="character?.culture">Culture: {{character?.culture}}</div>
+
+    <div class="data" *ngIf="character?.died">Died: {{character?.died}}</div>
+
+    <div class="data" *ngIf="character?.titles">Titles:
+      <div class="list-item" *ngFor="let title of character?.titles">{{title}}</div>
+    </div>
+
+    <div class="data" *ngIf="character?.spouse">Spouse:
+      <a [routerLink]="['/charactersdetails/' + character?.spouse?.id]">{{character?.spouse.name}}</a>
+    </div>
+
+    <div class="data" *ngIf="character?.father">Father: {{character?.father}}</div>
+
+    <div class="data" *ngIf="character?.mother">Mother: {{character?.mother}}</div>
+
+
+    <div class="data" *ngIf="character?.aliases">Allegiances:
+      <div class="list-item" *ngFor="let allegiance of character?.allegiances">
+        <a [routerLink]="['/housesdetails/' + allegiance?.id]"> {{allegiance?.name}}</a>
+      </div>
+    </div>
+
+    <div class="data" *ngIf="character?.tvSeries">TV Series:
+      <div class="list-item" *ngFor="let series of character?.tvSeries">{{series}}</div>
+    </div>
+
+    <div class="data" *ngIf="character?.books">Books:
+      <div class="list-item" *ngFor="let book of character?.books">{{book}}</div>
+    </div>
+
+    <div class="data" *ngIf="character?.povBooks">POV books:
+      <div class="list-item" *ngFor="let book of character?.povBooks">{{book}}</div>
+    </div>
+
+    <div class="data" *ngIf="character?.tvSeries">TV Series:
+      <div class="list-item" *ngFor="let series of character?.tvSeries">{{series}}</div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>
