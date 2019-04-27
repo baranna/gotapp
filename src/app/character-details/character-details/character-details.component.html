@@ -7,7 +7,10 @@
   </mat-card-subtitle>
     <mat-divider></mat-divider>
   <mat-card-content>
-    <div class="first-row" *ngIf="character?.playedBy">Played by {{character?.playedBy}}</div>
+    <div *ngIf="character?.playedBy" class="data">Played by
+      <span *ngFor="let actor of character?.playedBy">
+      {{actor}},
+    </span></div>
 
     <div class="data" *ngIf="character?.born">Born {{character?.born}}</div>
 
@@ -25,10 +28,13 @@
       <a [routerLink]="['/charactersdetails/' + character?.spouse?.id]">{{character?.spouse.name}}</a>
     </div>
 
-    <div class="data" *ngIf="character?.father">Father: {{character?.father}}</div>
+    <div *ngIf="character?.father" class="data">Father:
+      <a [routerLink]="['/charactersdetails/' + character?.father?.id]">{{character?.father?.name}}</a>
+    </div>
 
-    <div class="data" *ngIf="character?.mother">Mother: {{character?.mother}}</div>
-
+    <div *ngIf="character?.mother" class="data">Mother:
+      <a [routerLink]="['/charactersdetails/' + character?.mother?.id]">{{character?.mother?.name}}</a>
+    </div>
 
     <div class="data" *ngIf="character?.aliases">Allegiances:
       <div class="list-item" *ngFor="let allegiance of character?.allegiances">
@@ -36,16 +42,16 @@
       </div>
     </div>
 
-    <div class="data" *ngIf="character?.tvSeries">TV Series:
-      <div class="list-item" *ngFor="let series of character?.tvSeries">{{series}}</div>
-    </div>
-
     <div class="data" *ngIf="character?.books">Books:
-      <div class="list-item" *ngFor="let book of character?.books">{{book}}</div>
+      <div *ngFor="let book of character?.books" class="list-item">
+        <a [routerLink]="['/booksdetails/' + book?.id]">{{book?.name}}</a>
+      </div>
     </div>
 
-    <div class="data" *ngIf="character?.povBooks">POV books:
-      <div class="list-item" *ngFor="let book of character?.povBooks">{{book}}</div>
+    <div *ngIf="character?.povBooks" class="data">POV Books:
+      <div *ngFor="let book of character?.povBooks" class="list-item">
+        <a [routerLink]="['/booksdetails/' + book?.id]"> {{book?.name}}</a>
+      </div>
     </div>
 
     <div class="data" *ngIf="character?.tvSeries">TV Series:
