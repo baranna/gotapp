@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../services/search.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {House} from '../../model/house';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-house-details',
@@ -11,18 +13,22 @@ import {House} from '../../model/house';
 export class HouseDetailsComponent implements OnInit {
 
   public house: House;
-  private houseUrl: string;
+  private observableHouse: Observable<House>;
 
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
-    this.houseUrl = this.route.snapshot.paramMap.get('url');
   }
 
 
   ngOnInit() {
-    this.searchService.getByUrl(this.houseUrl).subscribe(
+    this.observableHouse = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.searchService.getHouseId(params.get('id')))
+    );
+    this.observableHouse.subscribe(
       result => {
         this.house = result;
         console.log(result);
+        this.house.id = this.house.url.split('/')[5];
       }
     );
   }

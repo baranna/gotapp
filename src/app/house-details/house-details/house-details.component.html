@@ -1,3 +1,51 @@
-<p>
-  {{house?.name}}
-</p>
+<mat-card>
+  <mat-card-title>{{house?.name}}</mat-card-title>
+  <mat-card-subtitle>
+    <span>{{house?.words}}</span>
+  </mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="data" *ngIf="house?.currentLord">Current Lord: {{house?.currentLord}}</div>
+
+    <div class="data" *ngIf="house?.diedOut">Died out in {{house?.diedOut}}</div>
+
+    <div class="data" *ngIf="house?.founded">Founded in {{house?.founded}}</div>
+
+    <div class="data" *ngIf="house?.founder">Founder: {{house?.founder}}</div>
+
+    <div class="data" *ngIf="house?.heir">Heir: {{house?.heir}}</div>
+
+    <div class="data" *ngIf="house?.overlord">Overlord: {{house?.overlord}}</div>
+
+    <div class="data" *ngIf="house?.region">Region: {{house?.region}}</div>
+
+    <div class="data" *ngIf="house?.seats">Seats:
+      <div class="list-item" *ngFor="let seat of house?.seats">{{seat}}</div>
+    </div>
+
+    <div class="data" *ngIf="house?.titles">Titles:
+      <div class="list-item" *ngFor="let title of house?.titles">{{title}}</div>
+    </div>
+
+    <div class="data" *ngIf="house?.coatOfArms">Coat of Arms: {{house?.coatOfArms}}</div>
+
+    <div class="data" *ngIf="house?.ancestralWeapons">Ancestral weapons:
+      <div class="list-item" *ngFor="let weapon of house?.ancestralWeapons">{{weapon}}</div>
+    </div>
+
+    <div class="data" *ngIf="house?.cadetBranches">Cadet branches:
+      <div class="list-item" *ngFor="let cadet of house?.cadetBranches">{{cadet}}</div>
+    </div>
+
+    <div class="data" *ngIf="house?.swornMembers">Sworn members:
+      <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport">
+        <div *cdkVirtualFor="let member of house?.swornMembers" class="scroll-item">{{member}}</div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+
+
+
+
+
+  </mat-card-content>
+</mat-card>
