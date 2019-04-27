@@ -1,4 +1,5 @@
 import {Entity} from './entity';
+import {Character} from './character';
 
 export class Book extends Entity{
   constructor(public url: string,
@@ -11,7 +12,7 @@ export class Book extends Entity{
               public mediaType: string,
               public released: Date,
               public characters: string[],
-              public povCharacters: string[],
+              public povCharacters: Character[],
               public id: string
   ){
     super(id, url, name);

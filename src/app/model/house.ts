@@ -1,4 +1,5 @@
 import {Entity} from './entity';
+import {Character} from './character';
 
 export class House extends Entity {
   constructor(public	url:	string,
@@ -8,15 +9,15 @@ export class House extends Entity {
               public	words:	string,
               public	titles:	string[],
               public	seats:	string[],
-              public	currentLord:	string,
-              public	heir:	string,
-              public	overlord:	string,
+              public  currentLord: Character,
+              public  heir: Character,
+              public  overlord: House,
               public	founded:	string,
-              public	founder:	string,
+              public  founder: Character,
               public	diedOut:	string,
               public	ancestralWeapons:	string[],
-              public	cadetBranches:	string[],
-              public	swornMembers:	string[],
+              public  cadetBranches: House[],
+              public  swornMembers: Character[],
               public id: string
   ){
     super(id, url, name);
