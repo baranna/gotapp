@@ -19,25 +19,17 @@ import {HouseDetailsComponent} from './house-details/house-details/house-details
 import {HouseDetailsModule} from './house-details/house-details.module';
 import {BookDetailsComponent} from './book-details/book-details/book-details.component';
 import {BookDetailsModule} from './book-details/book-details.module';
-
-
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'searchresult', component: SearchResultComponent },
-  {path: 'charactersdetails/:id', component: CharacterDetailsComponent},
-  {path: 'housesdetails/:id', component: HouseDetailsComponent},
-  {path: 'booksdetails/:id', component: BookDetailsComponent},
-];
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     MatButtonModule,
     HomeModule,
     MatFormFieldModule,
@@ -46,7 +38,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     CharacterDetailsModule,
     BookDetailsModule,
-    HouseDetailsModule
+    HouseDetailsModule,
+    AppRoutingModule
   ],
   providers: [SearchService],
   bootstrap: [AppComponent]
