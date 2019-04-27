@@ -22,12 +22,11 @@ export class HouseDetailsComponent implements OnInit {
   ngOnInit() {
     this.observableHouse = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.searchService.getHouseId(params.get('id')))
+        this.searchService.getHouseById(params.get('id')))
     );
     this.observableHouse.subscribe(
       result => {
         this.house = result;
-        console.log(result);
         this.house.id = this.house.url.split('/')[5];
       }
     );
