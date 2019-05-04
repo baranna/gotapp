@@ -141,7 +141,6 @@ export class SearchService {
             });
           }
 
-          // TODO: nem működik lassú az api és nem jönnek meg
           for (let i = 0; i < response.swornMembers.length; i++) {
             let id = (<string><unknown>response.swornMembers[i]).split('/')[5];
             this.getById('characters', id).subscribe(result => {
