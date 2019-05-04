@@ -18,7 +18,7 @@ export class HouseDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
-
+  //TODO: scroll
   ngOnInit() {
     this.observableHouse = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>

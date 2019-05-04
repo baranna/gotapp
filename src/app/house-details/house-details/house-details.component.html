@@ -46,11 +46,17 @@
         <a [routerLink]="['/housesdetails/' + cadet?.id]"> {{cadet?.name}}</a>
       </div>
     </div>
-
+    <!--
     <div class="data" *ngIf="house?.swornMembers">Sworn members:
       <cdk-virtual-scroll-viewport itemSize="50" class="scroll-viewport">
         <div *cdkVirtualFor="let member of house?.swornMembers" class="scroll-item">{{member}}</div>
       </cdk-virtual-scroll-viewport>
+    </div>
+    -->
+    <div *ngIf="house?.swornMembers" class="data">Sworn members:
+      <div *ngFor="let member of house?.swornMembers" class="list-item">
+        <a [routerLink]="['/charactersdetails/' + member?.id]"> {{member?.name}}</a>
+      </div>
     </div>
 
 
