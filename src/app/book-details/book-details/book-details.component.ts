@@ -5,6 +5,7 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Book} from '../../model/book';
 import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-book-details',
@@ -12,7 +13,6 @@ import {Observable} from 'rxjs';
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
-  //TODO: released date formázása
 
   public book: Book;
   private observableBook: Observable<Book>;
@@ -31,6 +31,7 @@ export class BookDetailsComponent implements OnInit {
       result => {
         this.book = result;
         this.book.id = this.book.url.split('/')[5];
+        this.book.released = moment(this.book.released).format('MMMM DD, YYYY');
       }
     );
   }

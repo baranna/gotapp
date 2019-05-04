@@ -10,7 +10,7 @@ export class Book extends Entity{
               public publisher: string,
               public country: string,
               public mediaType: string,
-              public released: Date,
+              public released: string,
               public characters: string[],
               public povCharacters: Character[],
               public id: string
