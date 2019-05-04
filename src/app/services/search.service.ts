@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Entity} from '../model/entity';
 import {Character} from '../model/character';
 import {Observable} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {House} from '../model/house';
 import {Book} from '../model/book';
 
@@ -18,8 +18,8 @@ export class SearchService {
 
   // TODO: url kiszervezés
   // TODO: refactor
-  // TODO: betöltések külön függvényekbe
-  // TODO: id beállítások
+  // TODO: id beállítások többszörösek
+
   // FIXME: redirect a home-ra ha ezek undefined
   public type: string;
   public name: string;
@@ -141,13 +141,25 @@ export class SearchService {
             });
           }
 
-          for (let i = 0; i < response.swornMembers.length; i++) {
-            let id = (<string><unknown>response.swornMembers[i]).split('/')[5];
+        if (response.swornMembers) {
+
+          const membersToFetch: Character[] = response.swornMembers;
+          response.swornMembers = [];
+
+          for (let i = 0; i < membersToFetch.length; i++) {
+
+            let id = (<string><unknown>membersToFetch[i]).split('/')[5];
+
             this.getById('characters', id).subscribe(result => {
-              response.swornMembers[i] = result;
-              response.swornMembers[i].id = id;
+              if (result.name.length != 0) {
+                result.id = id;
+                response.swornMembers = [...response.swornMembers, result];
+                console.log(result);
+              }
             });
           }
+        }
+
 
           for (let i = 0; i < response.cadetBranches.length; i++) {
             let id = (<string><unknown>response.cadetBranches[i]).split('/')[5];

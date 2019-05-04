@@ -25,7 +25,7 @@ input:-webkit-autofill {
 .mat-card {
   color: aliceblue;
   font-family: "Segoe UI";
-  width: 50%;
+  width: 700px;
   margin: auto;
   background: rgba(57, 67, 98, 0.55);
 }

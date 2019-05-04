@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../../services/search.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {House} from '../../model/house';
@@ -18,7 +18,6 @@ export class HouseDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
-  //TODO: scroll
   ngOnInit() {
     this.observableHouse = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
