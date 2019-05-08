@@ -7,10 +7,11 @@ import {CharacterDetailsComponent} from './character-details/character-details/c
 import {HouseDetailsComponent} from './house-details/house-details/house-details.component';
 import {BookDetailsComponent} from './book-details/book-details/book-details.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {SearchGuard} from './helpers/search.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'searchresult', component: SearchResultComponent },
+  {path: 'searchresult', component: SearchResultComponent, canActivate: [SearchGuard]},
   { path: 'charactersdetails/:id', component: CharacterDetailsComponent},
   { path: 'housesdetails/:id', component: HouseDetailsComponent},
   { path: 'booksdetails/:id', component: BookDetailsComponent},

@@ -12,7 +12,7 @@ import {BookDetailsModule} from './book-details/book-details.module';
 import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {environment} from '../environments/environment';
-import {ApiBaseUrlInterceptor} from './ApiBaseUrlInterceptor';
+import {ApiBaseUrlInterceptor} from './helpers/ApiBaseUrlInterceptor';
 
 //TODO: KOMMENTEZÉS
 
