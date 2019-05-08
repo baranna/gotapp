@@ -7,6 +7,7 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  font-family: "Segoe UI";
 
 }
 
@@ -24,7 +25,6 @@ input:-webkit-autofill {
 
 .mat-card {
   color: aliceblue;
-  font-family: "Segoe UI";
   width: 700px;
   margin: auto;
   background: rgba(57, 67, 98, 0.55);
