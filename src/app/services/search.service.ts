@@ -30,7 +30,7 @@ export class SearchService {
   }
 
   search(): Observable<Entity[]> {
-    return this.http.get<Entity[]>(`https://anapioficeandfire.com/api/${this.type}?name=${this.name}`).pipe(
+    return this.http.get<Entity[]>(`${this.type}?name=${this.name}`).pipe(
       map<Entity[], any>(response => {
         response.forEach( entity => entity.id = entity.url.split('/')[5]);
         return  response;
@@ -39,7 +39,7 @@ export class SearchService {
   }
 
   getById(entityType: string, id: string): Observable<any> {
-    return this.http.get<any>(`https://anapioficeandfire.com/api/${entityType}/${id}`).pipe(
+    return this.http.get<any>(`${entityType}/${id}`).pipe(
       map<Entity, any>(response => {
         response.id = response.url.split('/')[5];
         return response;
@@ -48,7 +48,7 @@ export class SearchService {
   }
 
   getCharacterById(id: string): Observable<Character> {
-    return this.http.get<Character>(`https://anapioficeandfire.com/api/characters/${id}`).pipe(
+    return this.http.get<Character>(`characters/${id}`).pipe(
       map<Character, any>(
         response => {
 
@@ -107,7 +107,7 @@ export class SearchService {
   }
 
   getHouseById(id: string): Observable<House> {
-    return this.http.get<House>(`https://anapioficeandfire.com/api/houses/${id}`).pipe(
+    return this.http.get<House>(`houses/${id}`).pipe(
       map<House, any>(response => {
           if (response.founder) {
             let id = (<string><unknown>response.founder).split('/')[5];
@@ -154,7 +154,6 @@ export class SearchService {
               if (result.name.length != 0) {
                 result.id = id;
                 response.swornMembers = [...response.swornMembers, result];
-                console.log(result);
               }
             });
           }
@@ -176,7 +175,7 @@ export class SearchService {
   }
 
   getBookById(id: string): Observable<Book> {
-    return this.http.get<Book>(`https://anapioficeandfire.com/api/books/${id}`).pipe(
+    return this.http.get<Book>(`books/${id}`).pipe(
       map<Book, any>(response => {
 
         for (let i = 0; i < response.povCharacters.length; i++) {
