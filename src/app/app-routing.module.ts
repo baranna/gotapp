@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
-import {SearchResultComponent} from './search-result/search-result.component';
+import {HomeComponent} from './home/home/home.component';
+import {SearchResultComponent} from './search-result/search-result/search-result.component';
 import {CharacterDetailsComponent} from './character-details/character-details/character-details.component';
 import {HouseDetailsComponent} from './house-details/house-details/house-details.component';
 import {BookDetailsComponent} from './book-details/book-details/book-details.component';

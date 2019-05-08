@@ -1,14 +1,13 @@
-
-import {SearchService} from '../services/search.service';
-import {Entity} from '../model/entity';
+import {Entity} from '../../model/entity';
 import {Component, OnInit} from '@angular/core';
+import {SearchService} from '../../services/search.service';
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css']
 })
-// TODO több találat miatt lehetne néven kívül plusz infó pl born
+// TODO több találat miatt visszagomb a kereséshez
 
 export class SearchResultComponent implements OnInit {
 
