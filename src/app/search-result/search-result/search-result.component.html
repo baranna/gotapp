@@ -1,16 +1,19 @@
 <script src="search-result.component.spec.ts"></script>
-<div class="search-results-div">
+<div *ngIf="resultCount != 0; else elseBlock" class="search-results-div">
   <div class="search-result-header-div">
     <h3 class="search-result-header">Search result:</h3>
   </div>
-  <mat-list *ngIf="resultCount != 0; else elseBlock">
+  <mat-list>
     <mat-card *ngFor="let entity of result">
-      <a [routerLink]="['/', detailsLink,  entity.id ]" >{{entity.name}}</a>
+      <app-search-result-entity [entity]="entity"></app-search-result-entity>
     </mat-card>
   </mat-list>
 </div>
 
 <ng-template #elseBlock>
-  <p style="text-align: center">Sorry we couldn't find what you were searching for.</p>
+  <div class="elseBlock">
+    <p>Sorry there was no match for that name</p>
+    <button (click)="router.navigateByUrl('')" color="accent" mat-button>Try again</button>
+  </div>
 </ng-template>
 

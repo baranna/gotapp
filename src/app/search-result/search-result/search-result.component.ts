@@ -1,6 +1,7 @@
 import {Entity} from '../../model/entity';
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../../services/search.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -13,9 +14,9 @@ export class SearchResultComponent implements OnInit {
 
   public result: Entity[];
   public resultCount: number;
-  public detailsLink: string;
 
-  constructor(private searchService: SearchService) {
+
+  constructor(private searchService: SearchService, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class SearchResultComponent implements OnInit {
       result => {
         this.result = result;
         this.resultCount = this.result.length;
-        this.detailsLink = this.searchService.type + 'details';
+        console.log(this.resultCount);
       }
     );
 

@@ -32,3 +32,23 @@ a:hover {
   width: 30%;
   margin: auto;
 }
+
+p {
+  text-align: center;
+  color: aliceblue;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.mat-button {
+  background: rgba(57, 67, 98, 0.55);
+  color: aliceblue;
+  font-size: 16px;
+}
+
+.elseBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
