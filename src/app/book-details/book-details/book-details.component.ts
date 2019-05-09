@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {SearchService} from '../../services/search.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Book} from '../../model/book';
 import {switchMap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-book-details',
@@ -31,7 +30,7 @@ export class BookDetailsComponent implements OnInit {
       result => {
         this.book = result;
         this.book.id = this.book.url.split('/')[5];
-        this.book.released = moment(this.book.released).format('MMMM DD, YYYY');
+        this.book.released = Book.formatDate(this.book.released);
       }
     );
   }

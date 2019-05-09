@@ -1,5 +1,6 @@
 import {Entity} from './entity';
 import {Character} from './character';
+import * as moment from 'moment';
 
 export class Book extends Entity{
   constructor(public url: string,
@@ -16,5 +17,9 @@ export class Book extends Entity{
               public id: string
   ){
     super(id, url, name);
+  }
+
+  public static formatDate(date: string): string {
+    return moment(date).format('MMMM DD, YYYY');
   }
 }
