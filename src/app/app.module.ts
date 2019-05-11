@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HomeModule} from './home/home.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -13,15 +13,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {environment} from '../environments/environment';
 import {ApiBaseUrlInterceptor} from './helpers/ApiBaseUrlInterceptor';
+import {ApiErrorHandler} from './helpers/ApiErrorHandler';
+import {MatSnackBarModule} from '@angular/material';
 
-//TODO: KOMMENTEZÉS
-
-/*
-TODO: platformspecifikus megoldások
- Együttműködés natív JavaScript függvényekkel egyedi típusdefiníciós fájlokkal,
- böngésző local storage api használata, architekturális elemek komplex használata (pl. összetett,
- több modulon átívelő routing szabályok)
-*/
 
 @NgModule({
   declarations: [
@@ -37,17 +31,26 @@ TODO: platformspecifikus megoldások
     CharacterDetailsModule,
     BookDetailsModule,
     HouseDetailsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSnackBarModule
   ],
   providers: [
     SearchService,
-    {provide: 'API_BASE_URL', useValue: environment.apiBaseUrl},
+    {
+      provide: 'API_BASE_URL',
+      useValue: environment.apiBaseUrl
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiBaseUrlInterceptor,
       multi: true,
+    },
+    {
+      provide: ErrorHandler,
+      useClass: ApiErrorHandler
     }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
