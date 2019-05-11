@@ -18,7 +18,7 @@ export class SearchResultComponent implements OnInit {
   constructor(private searchService: SearchService, private router: Router) {
   }
 
-  /*
+  /**
   Calls the searchService to get the result entities
   saves their quantity so we can display a message if there're no results
   */

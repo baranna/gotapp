@@ -18,7 +18,7 @@ export class CharacterDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
-  /*
+  /**
   Gets the Character's id through route parameter
   calls the searchService to get the Character's data
   subscribes for the returned observable object

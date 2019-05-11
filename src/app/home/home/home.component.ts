@@ -17,10 +17,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  /*
-  Called when clicked on the search button
-  sets the entity's information on the searchService
-  navigates to the results page
+  /**
+   Called when clicked on the search button
+   sets the entity's information on the searchService
+   navigates to the results page
+   * @param name the entity's name
+   * @param type the entity's type
    */
   searchEntity(name: string, type: string) {
     this.searchService.setSearchEntitiesByName(name, type);

@@ -19,7 +19,7 @@ export class SearchResultEntityComponent implements OnInit {
   constructor(private searchService: SearchService) {
   }
 
-  /*
+  /**
   In order to display more data than the result's name
   we need the entity's type to show some specific data
   (born, released date, words)

@@ -16,7 +16,7 @@ export class SearchService {
   constructor(private http: HttpClient) {
   }
 
-  /*
+  /**
   The type (Character/House/Book) and name
   of the entity to be searched
   */
@@ -28,11 +28,12 @@ export class SearchService {
     this.name = name;
   }
 
-  /*
-  Searches for the set entity based on its name by calling the API
-  with the name as parameter,
-  multiple search results are expected, sets their id before returning
-  */
+  /**
+   Searches for the set entity based on its name by calling the API
+   with the name as parameter,
+   multiple search results are expected, sets their id before returning
+   * @return {Observable<any>} the fetched entity data
+   */
   search(): Observable<Entity[]> {
     return this.http.get<Entity[]>(`${this.type}?name=${this.name}`).pipe(
       map<Entity[], any>(response => {
@@ -42,10 +43,13 @@ export class SearchService {
       ));
   }
 
-  /*
-  Gets all types of entity from the API by its id
-  sets its id before returning
-  */
+  /**
+   Gets all types of entity from the API by its id
+   sets its id before returning
+   * @param entityType the type of the entity
+   * @param id the id of the entity
+   * @return {Observable<any>} the fetched entity data
+   */
   getById(entityType: string, id: string): Observable<any> {
     return this.http.get<any>(`${entityType}/${id}`).pipe(
       map<Entity, any>(response => {
@@ -55,11 +59,13 @@ export class SearchService {
     );
   }
 
-  /*
-  Gets a character from the API by its id
-  related entities are also downloaded if exist
-  in order to show their names, enable navigation to their details page
-  */
+  /**
+   Gets a character from the API by its id
+   related entities are also downloaded if exist
+   in order to show their names, enable navigation to their details page
+   * @param id the Character's id
+   * @return {Observable<any>} the fetched Character data
+   */
   getCharacterById(id: string): Observable<Character> {
     return this.http.get<Character>(`characters/${id}`).pipe(
 
@@ -114,11 +120,13 @@ export class SearchService {
     );
   }
 
-  /*
- Gets a house from the API by its id
- related entities are also downloaded if exist
- in order to show their names, enable navigation to their details page
- */
+  /**
+   * Gets a house from the API by its id
+   * related entities are also downloaded if exist
+   * in order to show their names, enable navigation to their details page
+   * @param id the House's id
+   * @return {Observable<any>} the fetched House data
+   */
   getHouseById(id: string): Observable<House> {
     return this.http.get<House>(`houses/${id}`).pipe(
       map<House, any>(
@@ -152,7 +160,7 @@ export class SearchService {
             });
           }
 
-          /*
+          /**
           Getting the related sworn members,
           some of them don't have data (a name) we filter these
            */
@@ -183,12 +191,14 @@ export class SearchService {
     );
   }
 
-  /*
-  Gets a book from the API by its id
-  related entities are also downloaded if exist
-  in order to show their names, enable navigation to their details page
-  also formats the released date
-  */
+  /**
+   Gets a book from the API by its id
+   related entities are also downloaded if exist
+   in order to show their names, enable navigation to their details page
+   also formats the released date
+   * @param id the Book's id
+   * @return {Observable<any>} the fetched Book data
+   */
   getBookById(id: string): Observable<Book> {
     return this.http.get<Book>(`books/${id}`).pipe(
       map<Book, any>(
@@ -208,10 +218,12 @@ export class SearchService {
     );
   }
 
-  /*
-  The API does not provide the entities' id, it is needed for navigation
-  this function extracts it from their URL
-  */
+  /**
+   The API does not provide the entities' id, it is needed for navigation
+   this function extracts it from their URL
+   * @param url the entity's url
+   * @return {string} the entity's id
+   */
   getIdFromUrl(url: string): string {
     return url.split('/')[5];
   }

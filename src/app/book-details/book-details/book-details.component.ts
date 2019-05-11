@@ -19,7 +19,7 @@ export class BookDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
-  /*
+  /**
   Gets the Book's id through route parameter
   calls the searchService to get the Book's data
   subscribes for the returned observable object

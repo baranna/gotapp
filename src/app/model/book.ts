@@ -19,6 +19,11 @@ export class Book extends Entity{
     super(id, url, name);
   }
 
+  /**
+   Formatting date using native JavaScript library moment
+   * @param date the date to be formatted
+   * @return {string} the formatted date
+   */
   public static formatDate(date: string): string {
     return moment(date).format('MMMM DD, YYYY');
   }
