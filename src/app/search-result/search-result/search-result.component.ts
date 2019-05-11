@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css']
 })
-// TODO több találat miatt visszagomb a kereséshez
 
 export class SearchResultComponent implements OnInit {
 
@@ -19,12 +18,15 @@ export class SearchResultComponent implements OnInit {
   constructor(private searchService: SearchService, private router: Router) {
   }
 
+  /*
+  Calls the searchService to get the result entities
+  saves their quantity so we can display a message if there're no results
+  */
   ngOnInit() {
     this.searchService.search().subscribe(
       result => {
         this.result = result;
         this.resultCount = this.result.length;
-        console.log(this.resultCount);
       }
     );
 

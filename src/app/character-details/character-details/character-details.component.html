@@ -1,63 +1,54 @@
 <mat-card>
-  <mat-card-title>{{character?.name}}</mat-card-title>
+  <mat-card-title>
+    {{character?.name}}
+  </mat-card-title>
   <mat-card-subtitle>
     <span *ngFor="let aliase of character?.aliases">
       {{aliase}},
     </span>
   </mat-card-subtitle>
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
   <mat-card-content>
     <div *ngIf="character?.playedBy" class="data">Played by
       <span *ngFor="let actor of character?.playedBy">
-      {{actor}},
-    </span></div>
-
-    <div class="data" *ngIf="character?.born">Born {{character?.born}}</div>
-
-    <div class="data" *ngIf="character?.gender">Gender: {{character?.gender}}</div>
-
-    <div class="data" *ngIf="character?.culture">Culture: {{character?.culture}}</div>
-
-    <div class="data" *ngIf="character?.died">Died: {{character?.died}}</div>
-
-    <div class="data" *ngIf="character?.titles">Titles:
-      <div class="list-item" *ngFor="let title of character?.titles">{{title}}</div>
+        {{actor}},
+      </span>
     </div>
-
+    <div class="data" *ngIf="character?.born">Born {{character?.born}}</div>
+    <div class="data" *ngIf="character?.gender">Gender: {{character?.gender}}</div>
+    <div class="data" *ngIf="character?.culture">Culture: {{character?.culture}}</div>
+    <div class="data" *ngIf="character?.died">Died: {{character?.died}}</div>
+    <div class="data" *ngIf="character?.titles">Titles:
+      <div *ngFor="let title of character?.titles" class="list-item">
+        {{title}}
+      </div>
+    </div>
     <div class="data" *ngIf="character?.spouse">Spouse:
       <a [routerLink]="['/charactersdetails/' + character?.spouse?.id]">{{character?.spouse.name}}</a>
     </div>
-
     <div *ngIf="character?.father" class="data">Father:
       <a [routerLink]="['/charactersdetails/' + character?.father?.id]">{{character?.father?.name}}</a>
     </div>
-
     <div *ngIf="character?.mother" class="data">Mother:
       <a [routerLink]="['/charactersdetails/' + character?.mother?.id]">{{character?.mother?.name}}</a>
     </div>
-
     <div class="data" *ngIf="character?.aliases">Allegiances:
       <div class="list-item" *ngFor="let allegiance of character?.allegiances">
         <a [routerLink]="['/housesdetails/' + allegiance?.id]"> {{allegiance?.name}}</a>
       </div>
     </div>
-
     <div class="data" *ngIf="character?.books">Books:
       <div *ngFor="let book of character?.books" class="list-item">
         <a [routerLink]="['/booksdetails/' + book?.id]">{{book?.name}}</a>
       </div>
     </div>
-
     <div *ngIf="character?.povBooks" class="data">POV Books:
       <div *ngFor="let book of character?.povBooks" class="list-item">
         <a [routerLink]="['/booksdetails/' + book?.id]"> {{book?.name}}</a>
       </div>
     </div>
-
     <div class="data" *ngIf="character?.tvSeries">TV Series:
       <div class="list-item" *ngFor="let series of character?.tvSeries">{{series}}</div>
     </div>
-
-
   </mat-card-content>
 </mat-card>

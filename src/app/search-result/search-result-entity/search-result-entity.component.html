@@ -1,4 +1,4 @@
 <mat-card-content>
-  <a [routerLink]="['/', detailsLink,  entity.id ]" class="name-link">{{entity?.name}}</a>
+  <a [routerLink]="['/', detailsLink,  entity.id ]">{{entity?.name}}</a>
   <p *ngIf="detail" class="detail">{{detail}}</p>
 </mat-card-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../../services/search.service';
 import {Character} from '../../model/character';
 import {ActivatedRoute, ParamMap} from '@angular/router';
@@ -18,7 +18,11 @@ export class CharacterDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
-
+  /*
+  Gets the Character's id through route parameter
+  calls the searchService to get the Character's data
+  subscribes for the returned observable object
+  */
   ngOnInit() {
     this.observableCharacter = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
@@ -27,7 +31,6 @@ export class CharacterDetailsComponent implements OnInit {
     this.observableCharacter.subscribe(
       result => {
         this.character = result;
-        this.character.id = this.character.url.split('/')[5];
       }
     );
   }

@@ -11,13 +11,19 @@ export class HomeComponent implements OnInit {
 
   public type = "characters";
 
-  constructor(public router: Router, private characterService: SearchService) { }
+  constructor(public router: Router, private searchService: SearchService) {
+  }
 
   ngOnInit() {
   }
 
+  /*
+  Called when clicked on the search button
+  sets the entity's information on the searchService
+  navigates to the results page
+   */
   searchEntity(name: string, type: string) {
-    this.characterService.setSearchEntitiesByName(name, type);
+    this.searchService.setSearchEntitiesByName(name, type);
     this.router.navigateByUrl('/searchresult');
   }
 }

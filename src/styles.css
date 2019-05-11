@@ -7,20 +7,7 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  font-family: "Segoe UI";
-
-}
-
-@-webkit-keyframes autofill {
-  to {
-    color: #666;
-    background: transparent;
-  }
-}
-
-input:-webkit-autofill {
-  -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both;
+  font-family: "Segoe UI", serif;
 }
 
 .mat-card {
@@ -46,7 +33,6 @@ input:-webkit-autofill {
 
 a {
   color: #a1cfff;
-  font-family: "Segoe UI";
   text-decoration: none;
 }
 a:visited {
@@ -56,26 +42,18 @@ a:hover {
   color: dodgerblue;
 }
 
-.first-row {
-  padding-top: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-family: "Segoe UI";
-  color: aliceblue;
-  font-size: 16px;
-}
-
 .mat-card-content .data{
   margin-top: 20px;
   margin-bottom: 15px;
-  font-family: "Segoe UI";
+  font-family: "Segoe UI", serif;
   color: aliceblue;
   font-size: 16px;
 }
 
-.list-item {
+.mat-card-content .list-item {
   margin-left: 30px;
-  font-family: "Segoe UI";
+  font-family: "Segoe UI", serif;
   color: aliceblue;
   font-size: 16px;
 }
+

@@ -1,5 +1,7 @@
 <mat-card>
-  <mat-card-title>{{book?.name}}</mat-card-title>
+  <mat-card-title>
+    {{book?.name}}
+  </mat-card-title>
   <mat-card-subtitle>
     <span>{{book?.authors}}</span>
   </mat-card-subtitle>
@@ -10,7 +12,7 @@
     <div *ngIf="book?.isbn" class="data">ISBN: {{book?.isbn}}</div>
     <div *ngIf="book?.mediaType" class="data">Media type: {{book?.mediaType}}</div>
     <div *ngIf="book?.publisher" class="data">Publisher: {{book?.publisher}}</div>
-    <div *ngIf="book?.released" class="data">Released: {{book?.released?.toLocaleString()}}</div>
+    <div *ngIf="book?.released" class="data">Released: {{book?.released}}</div>
     <div *ngIf="book?.povCharacters" class="data">POV characters:
       <div *ngFor="let character of book?.povCharacters" class="list-item">
         <a [routerLink]="['/charactersdetails/' + character?.id]"> {{character?.name}}</a>

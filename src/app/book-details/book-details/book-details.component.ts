@@ -17,10 +17,13 @@ export class BookDetailsComponent implements OnInit {
   private observableBook: Observable<Book>;
 
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
-
   }
 
-
+  /*
+  Gets the Book's id through route parameter
+  calls the searchService to get the Book's data
+  subscribes for the returned observable object
+  */
   ngOnInit() {
     this.observableBook = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
@@ -29,8 +32,6 @@ export class BookDetailsComponent implements OnInit {
     this.observableBook.subscribe(
       result => {
         this.book = result;
-        this.book.id = this.book.url.split('/')[5];
-        this.book.released = Book.formatDate(this.book.released);
       }
     );
   }

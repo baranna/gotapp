@@ -19,15 +19,20 @@ export class SearchResultEntityComponent implements OnInit {
   constructor(private searchService: SearchService) {
   }
 
+  /*
+  In order to display more data than the result's name
+  we need the entity's type to show some specific data
+  (born, released date, words)
+  and for navigation to the entity's detailed page
+  In the onInit we get the searched type from the searchService
+  then display details based on it
+  */
   ngOnInit() {
     const entityType = this.searchService.type;
-    this.searchService.getById(entityType, this.entity.id).subscribe(
-      result => {
-        this.entity = new Entity(result.id, result.url, result.name);
-        this.detailsLink = this.searchService.type + 'details';
-      }
-    );
-    switch (this.searchService.type) {
+
+    this.detailsLink = entityType + 'details';
+
+    switch (entityType) {
       case 'characters':
         if ((<Character>this.entity).born)
           this.detail = 'Born ' + (<Character>this.entity).born;

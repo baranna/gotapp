@@ -18,6 +18,11 @@ export class HouseDetailsComponent implements OnInit {
   constructor(private searchService: SearchService, private route: ActivatedRoute) {
   }
 
+  /*
+  Gets the House's id through route parameter
+  calls the searchService to get the House's data
+  subscribes for the returned observable object
+  */
   ngOnInit() {
     this.observableHouse = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
@@ -26,8 +31,8 @@ export class HouseDetailsComponent implements OnInit {
     this.observableHouse.subscribe(
       result => {
         this.house = result;
-        this.house.id = this.house.url.split('/')[5];
       }
     );
   }
+
 }

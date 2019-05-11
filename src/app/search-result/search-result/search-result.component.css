@@ -12,17 +12,6 @@
   font-size: 25px;
   margin: 10px;
 }
-a {
-  color: aliceblue;
-  font-family: "Segoe UI";
-  text-decoration: none;
-}
-a:visited {
-  color:aliceblue;
-}
-a:hover {
-  color: dodgerblue;
-}
 
 .search-result-header-div {
   text-align: left;

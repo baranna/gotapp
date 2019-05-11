@@ -8,68 +8,40 @@
     <div *ngIf="house?.currentLord" class="data">Current Lord:
       <a [routerLink]="['/charactersdetails/' + house?.currentLord?.id]"> {{house?.currentLord?.name}}</a>
     </div>
-
     <div class="data" *ngIf="house?.diedOut">Died out in {{house?.diedOut}}</div>
-
     <div class="data" *ngIf="house?.founded">Founded in {{house?.founded}}</div>
-
     <div *ngIf="house?.founder" class="data">Founder:
       <a [routerLink]="['/charactersdetails/' + house?.founder?.id]">{{house?.founder?.name}}</a>
     </div>
-
     <div *ngIf="house?.heir" class="data">Heir:
       <a [routerLink]="['/charactersdetails/' + house?.heir?.id]"> {{house?.heir?.name}}</a>
     </div>
-
     <div *ngIf="house?.overlord" class="data">Overlord:
       <a [routerLink]="['/housesdetails/' + house?.overlord?.id]">{{house?.overlord?.name}}</a>
     </div>
-
     <div class="data" *ngIf="house?.region">Region: {{house?.region}}</div>
-
     <div class="data" *ngIf="house?.seats">Seats:
       <div class="list-item" *ngFor="let seat of house?.seats">{{seat}}</div>
     </div>
-
     <div class="data" *ngIf="house?.titles">Titles:
       <div class="list-item" *ngFor="let title of house?.titles">{{title}}</div>
     </div>
-
     <div class="data" *ngIf="house?.coatOfArms">Coat of Arms: {{house?.coatOfArms}}</div>
 
     <div class="data" *ngIf="house?.ancestralWeapons">Ancestral weapons:
       <div class="list-item" *ngFor="let weapon of house?.ancestralWeapons">{{weapon}}</div>
     </div>
-
     <div class="data" *ngIf="house?.cadetBranches">Cadet branches:
       <div *ngFor="let cadet of house?.cadetBranches" class="list-item">
         <a [routerLink]="['/housesdetails/' + cadet?.id]"> {{cadet?.name}}</a>
       </div>
     </div>
-
     <div class="data" *ngIf="house?.swornMembers">Sworn members:
-
       <cdk-virtual-scroll-viewport class="scroll-viewport" itemSize="10">
-
         <li *cdkVirtualFor="let member of house?.swornMembers" class="scroll-item">
-          <a *ngIf="member?.name" [routerLink]="['/charactersdetails/' + member?.id]"> {{member?.name}}</a>
+          <a *ngIf="member?.name" [routerLink]="['/charactersdetails/' + member?.id]">{{member?.name}}</a>
         </li>
-
       </cdk-virtual-scroll-viewport>
     </div>
-
-    <!--
-    <div *ngIf="house?.swornMembers" class="data">Sworn members:
-      <div *ngFor="let member of house?.swornMembers" class="list-item">
-        <a [routerLink]="['/charactersdetails/' + member?.id]"> {{member?.name}}</a>
-      </div>
-    </div>
-    -->
-
-
-
-
-
-
   </mat-card-content>
 </mat-card>
