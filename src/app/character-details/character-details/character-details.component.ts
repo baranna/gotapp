@@ -28,13 +28,11 @@ export class CharacterDetailsComponent implements OnInit {
       switchMap((params: ParamMap) =>
         this.searchService.getCharacterById(params.get('id')))
     );
-
     this.observableCharacter.subscribe(
       result => {
         this.character = result;
       }
     );
-
   }
 
 }
