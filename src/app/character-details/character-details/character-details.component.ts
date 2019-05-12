@@ -34,6 +34,7 @@ export class CharacterDetailsComponent implements OnInit {
         this.character = result;
       }
     );
+
   }
 
 }
